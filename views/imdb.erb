@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>imdb search</title>
+	
+
+	<style type="text/css">
+  		 input {
+  		 	margin-top: 100px;
+  		 	margin-bottom: 50px;
+  		 	margin-left: 250px;
+  		 }
+  		 img {
+  		 	height: 300px;
+  		 }
+ 	</style>
+</head>
+<body>
+
+<form action="/posters" method="POST">
+		<input type="text" name="title" value="write a random word">
+		<button action="/movies">Go Riders!!!!</button>
+</form>
+
+<div>
+	
+	<%  @movies_posters.each do |url| %>
+
+			<img src= <%= url %> alt="poster"> 
+
+			<% end %>
+
+</div>
+	
+</body>
+</html>
