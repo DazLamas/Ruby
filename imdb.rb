@@ -8,6 +8,8 @@ get '/' do
 
 	@movies_posters = []
 
+	@movies_onpage = []
+
 	erb :imdb
 	
 end
@@ -17,22 +19,29 @@ post '/posters' do
 
  
 	@title = params["title"]
-	@search = Imdb::Search.new(@title)
-	@movies_list = @search.movies.take(9)
-	@movies_posters = @movies_list.map  do |element|
+	search = Imdb::Search.new(@title)
+	@movies_list = search.movies.take(9)
 
-		element.poster
+
+	@movies_year_list = []
+	@movies_onpage = []
+	@movies_list.each do |movie|
+
+		@movie_Year = movie.year
+
+		if !(@movies_year_list.include?(@movie_Year))
+
+		@movies_year_list << @movie_Year
+		@movies_onpage << movie
+		end
 
 	end
 
-	@movies_year = @movies_list.year
-	@movies_year.sample
+
+	@year = @movies_year_list.sample
 
 	erb :imdb
+
+
 	
 end
-
-
-
-#[1,2,3,4].sample
-#javascript front respuesta

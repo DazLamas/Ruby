@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>imdb search</title>
+	<script defer type="text/javascript" src="../js/imdb.js"></script>
 	
 
 	<style type="text/css">
@@ -23,13 +24,19 @@
 		<button action="/movies">Go Riders!!!!</button>
 </form>
 
+
+<p id="question" questionYear= "<%= @year %>" >And guess which one was recorded on <%= @year %></p>
+
 <div>
 	
-	<%  @movies_posters.each do |url| %>
+	<%  @movies_onpage.each do |movie| %>
 
-			<img src= <%= url %> alt="poster"> 
 
-			<% end %>
+			<img src="<%= movie.poster %>" alt="poster" year="<%= movie.year %>" > 
+
+
+	<% end %>
+
 
 </div>
 	
